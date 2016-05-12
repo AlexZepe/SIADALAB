@@ -1,0 +1,52 @@
+AppBundle\Entity\Carrera:
+    type: entity
+    table: carrera
+    indexes:
+        carrera_escula_fk:
+            columns:
+                - id_escuela
+    uniqueConstraints:
+        carrera_pk:
+            columns:
+                - id_carrera
+    id:
+        idCarrera:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_carrera
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomCarrera:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_carrera
+        codigoCarrera:
+            type: string
+            nullable: false
+            length: 6
+            fixed: false
+            column: codigo_carrera
+    manyToOne:
+        idEscuela:
+            targetEntity: Escuela
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_escuela:
+                    referencedColumnName: id_escuela
+            orphanRemoval: false
+    manyToMany:
+        idMateria:
+            targetEntity: Materia
+            cascade: {  }
+            mappedBy: idCarrera
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

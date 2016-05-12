@@ -1,0 +1,38 @@
+AppBundle\Entity\TipoActividad:
+    type: entity
+    table: tipo_actividad
+    indexes:
+        horario_tipo_actividad2_fk:
+            columns:
+                - id_horario
+    uniqueConstraints:
+        tipo_actividad_pk:
+            columns:
+                - id_tipo_actividad
+    id:
+        idTipoActividad:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_tipo_actividad
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomTipoActividad:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_tipo_actividad
+    manyToOne:
+        idHorario:
+            targetEntity: Horario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_horario:
+                    referencedColumnName: id_horario
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

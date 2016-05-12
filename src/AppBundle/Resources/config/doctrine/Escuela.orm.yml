@@ -1,0 +1,24 @@
+AppBundle\Entity\Escuela:
+    type: entity
+    table: escuela
+    uniqueConstraints:
+        escuela_pk:
+            columns:
+                - id_escuela
+    id:
+        idEscuela:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_escuela
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomEscuela:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_escuela
+    lifecycleCallbacks: {  }

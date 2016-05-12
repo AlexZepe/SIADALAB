@@ -1,0 +1,24 @@
+AppBundle\Entity\EstadoAula:
+    type: entity
+    table: estado_aula
+    uniqueConstraints:
+        estado_aula_pk:
+            columns:
+                - id_estado_aula
+    id:
+        idEstadoAula:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_estado_aula
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomEstadoAula:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_estado_aula
+    lifecycleCallbacks: {  }

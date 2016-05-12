@@ -1,0 +1,77 @@
+AppBundle\Entity\Materia:
+    type: entity
+    table: materia
+    indexes:
+        materia_ciclo_fk:
+            columns:
+                - id_ciclo
+    uniqueConstraints:
+        materia_pk:
+            columns:
+                - id_materia
+    id:
+        idMateria:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_materia
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomMateria:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_materia
+        codigoMateria:
+            type: string
+            nullable: false
+            length: 6
+            fixed: false
+            column: codigo_materia
+    manyToOne:
+        idCiclo:
+            targetEntity: Ciclo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ciclo:
+                    referencedColumnName: id_ciclo
+            orphanRemoval: false
+    manyToMany:
+        idCarrera:
+            targetEntity: Carrera
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idMateria
+            joinTable:
+                name: materia_carrera
+                joinColumns:
+                    -
+                        name: id_materia
+                        referencedColumnName: id_materia
+                inverseJoinColumns:
+                    -
+                        name: id_carrera
+                        referencedColumnName: id_carrera
+            orderBy: null
+        idDocente:
+            targetEntity: Docente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idMateria
+            joinTable:
+                name: materia_docente
+                joinColumns:
+                    -
+                        name: id_materia
+                        referencedColumnName: id_materia
+                inverseJoinColumns:
+                    -
+                        name: id_docente
+                        referencedColumnName: id_docente
+            orderBy: null
+    lifecycleCallbacks: {  }

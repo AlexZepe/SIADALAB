@@ -1,0 +1,59 @@
+AppBundle\Entity\Ciclo:
+    type: entity
+    table: ciclo
+    indexes:
+        ciclo_tipo_ciclo_fk:
+            columns:
+                - id_tipo_ciclo
+    uniqueConstraints:
+        ciclo_pk:
+            columns:
+                - id_ciclo
+    id:
+        idCiclo:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_ciclo
+            generator:
+                strategy: SEQUENCE
+    fields:
+        anio:
+            type: date
+            nullable: false
+        inicioCiclo:
+            type: date
+            nullable: false
+            column: inicio_ciclo
+        finCiclo:
+            type: date
+            nullable: false
+            column: fin_ciclo
+        inicioHorario:
+            type: date
+            nullable: false
+            column: inicio_horario
+        finHorario:
+            type: date
+            nullable: false
+            column: fin_horario
+        inicioClases:
+            type: date
+            nullable: false
+            column: inicio_clases
+        finClases:
+            type: date
+            nullable: false
+            column: fin_clases
+    manyToOne:
+        idTipoCiclo:
+            targetEntity: TipoCiclo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo_ciclo:
+                    referencedColumnName: id_tipo_ciclo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

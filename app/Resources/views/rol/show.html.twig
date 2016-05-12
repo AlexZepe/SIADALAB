@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rol</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idrol</th>
+                <td>{{ rol.idRol }}</td>
+            </tr>
+            <tr>
+                <th>Nomrol</th>
+                <td>{{ rol.nomRol }}</td>
+            </tr>
+            <tr>
+                <th>Descripcionrol</th>
+                <td>{{ rol.descripcionRol }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rol_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('rol_edit', { 'id': rol.idRol }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

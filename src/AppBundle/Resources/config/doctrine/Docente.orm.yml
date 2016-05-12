@@ -1,0 +1,37 @@
+AppBundle\Entity\Docente:
+    type: entity
+    table: docente
+    uniqueConstraints:
+        docente_pk:
+            columns:
+                - id_docente
+    id:
+        idDocente:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_docente
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomDocente:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_docente
+        carnet:
+            type: string
+            nullable: false
+            length: 7
+            fixed: false
+    manyToMany:
+        idMateria:
+            targetEntity: Materia
+            cascade: {  }
+            mappedBy: idDocente
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

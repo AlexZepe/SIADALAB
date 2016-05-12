@@ -1,0 +1,61 @@
+AppBundle\Entity\ReservaActividad:
+    type: entity
+    table: reserva_actividad
+    indexes:
+        reserva_actividad_tipo_activida:
+            columns:
+                - id_tipo_actividad
+    uniqueConstraints:
+        reserva_actividad_pk:
+            columns:
+                - id_reserva_actividad
+    id:
+        idReservaActividad:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_reserva_actividad
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomReservaActividad:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_reserva_actividad
+        cupo:
+            type: integer
+            nullable: false
+            unsigned: false
+        diaClase1:
+            type: date
+            nullable: true
+            column: dia_clase_1
+        diaClase2:
+            type: date
+            nullable: true
+            column: dia_clase_2
+        horaInicio:
+            type: time
+            nullable: false
+            column: hora_inicio
+        horaFinal:
+            type: time
+            nullable: false
+            column: hora_final
+        duracion:
+            type: time
+            nullable: false
+    manyToOne:
+        idTipoActividad:
+            targetEntity: TipoActividad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo_actividad:
+                    referencedColumnName: id_tipo_actividad
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

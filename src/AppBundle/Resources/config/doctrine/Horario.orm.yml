@@ -1,0 +1,38 @@
+AppBundle\Entity\Horario:
+    type: entity
+    table: horario
+    indexes:
+        horario_ciclo_fk:
+            columns:
+                - id_ciclo
+    uniqueConstraints:
+        horario_pk:
+            columns:
+                - id_horario
+    id:
+        idHorario:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_horario
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomHorario:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_horario
+    manyToOne:
+        idCiclo:
+            targetEntity: Ciclo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ciclo:
+                    referencedColumnName: id_ciclo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+AppBundle\Entity\SolicitudReserva:
+    type: entity
+    table: solicitud_reserva
+    indexes:
+        usuario_solicitud_fk:
+            columns:
+                - id_usuario
+    uniqueConstraints:
+        solicitud_reserva_pk:
+            columns:
+                - id_solicitud_reserva
+    id:
+        idSolicitudReserva:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_solicitud_reserva
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomSolicitudReserva:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_solicitud_reserva
+    manyToOne:
+        idUsuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_usuario:
+                    referencedColumnName: id_usuario
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

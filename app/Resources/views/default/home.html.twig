@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+
+		<div class="row">
+<div class="col-md-1"></div>
+  <div class="col-md-6">
+  		<img src="{{ asset('bootstrap/images/logo.png') }}" width="100%" height="100%" />
+  </div>
+<div class="col-md-1"></div>
+  <div class="col-md-3">
+<form class="form-horizontal">
+
+
+<!-- Form Name -->
+<legend>Entrar</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Usuario</label>  
+  <div class="col-md-8">
+  <input id="textinput" name="textinput" placeholder="Usuario" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Contraseña</label>
+  <div class="col-md-8">
+    <input id="passwordinput" name="passwordinput" placeholder="Contraseña" class="form-control input-md" type="password">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Entrar</button>
+  </div>
+</div>
+
+</form>
+  </div>
+<div class="col-md-1"></div>
+</div>
+{% endblock %}

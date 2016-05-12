@@ -1,0 +1,32 @@
+AppBundle\Entity\TipoPizarra:
+    type: entity
+    table: tipo_pizarra
+    uniqueConstraints:
+        tipo_pizarra_pk:
+            columns:
+                - id_pizarra
+    id:
+        idPizarra:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_pizarra
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomPizarra:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_pizarra
+    manyToMany:
+        idAula:
+            targetEntity: Aula
+            cascade: {  }
+            mappedBy: idPizarra
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

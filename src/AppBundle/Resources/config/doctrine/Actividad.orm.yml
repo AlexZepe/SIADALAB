@@ -1,0 +1,82 @@
+AppBundle\Entity\Actividad:
+    type: entity
+    table: actividad
+    indexes:
+        reserva_actividad2_fk:
+            columns:
+                - id_solicitud_reserva
+        actividad_estado_actividad_fk:
+            columns:
+                - id_estado_actividad
+        actividad_reserva_actividad_fk:
+            columns:
+                - id_reserva_actividad
+        actividad_materia_fk:
+            columns:
+                - id_materia
+    uniqueConstraints:
+        actividad_pk:
+            columns:
+                - id_actividad
+    id:
+        idActividad:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_actividad
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomActividad:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_actividad
+        fechaRealizacion:
+            type: date
+            nullable: false
+            column: fecha_realizacion
+        fechaAprobadoRechazado:
+            type: date
+            nullable: true
+            column: fecha_aprobado_rechazado
+    manyToOne:
+        idEstadoActividad:
+            targetEntity: EstadoActividad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_estado_actividad:
+                    referencedColumnName: id_estado_actividad
+            orphanRemoval: false
+        idMateria:
+            targetEntity: Materia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_materia:
+                    referencedColumnName: id_materia
+            orphanRemoval: false
+        idReservaActividad:
+            targetEntity: ReservaActividad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_reserva_actividad:
+                    referencedColumnName: id_reserva_actividad
+            orphanRemoval: false
+        idSolicitudReserva:
+            targetEntity: SolicitudReserva
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_solicitud_reserva:
+                    referencedColumnName: id_solicitud_reserva
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

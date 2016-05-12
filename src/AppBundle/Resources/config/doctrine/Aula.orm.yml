@@ -1,0 +1,76 @@
+AppBundle\Entity\Aula:
+    type: entity
+    table: aula
+    indexes:
+        actividad_aula_fk:
+            columns:
+                - id_actividad
+        aula_estado_aula_fk:
+            columns:
+                - id_estado_aula
+    uniqueConstraints:
+        aula_pk:
+            columns:
+                - id_aula
+    id:
+        idAula:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_aula
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomAula:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            column: nom_aula
+        capacidad:
+            type: integer
+            nullable: false
+            unsigned: false
+        sonido:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+    manyToOne:
+        idActividad:
+            targetEntity: Actividad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_actividad:
+                    referencedColumnName: id_actividad
+            orphanRemoval: false
+        idEstadoAula:
+            targetEntity: EstadoAula
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_estado_aula:
+                    referencedColumnName: id_estado_aula
+            orphanRemoval: false
+    manyToMany:
+        idPizarra:
+            targetEntity: TipoPizarra
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idAula
+            joinTable:
+                name: aula_pizarra
+                joinColumns:
+                    -
+                        name: id_aula
+                        referencedColumnName: id_aula
+                inverseJoinColumns:
+                    -
+                        name: id_pizarra
+                        referencedColumnName: id_pizarra
+            orderBy: null
+    lifecycleCallbacks: {  }

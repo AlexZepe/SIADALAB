@@ -1,0 +1,30 @@
+AppBundle\Entity\Rol:
+    type: entity
+    table: rol
+    uniqueConstraints:
+        rol_pk:
+            columns:
+                - id_rol
+    id:
+        idRol:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_rol
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nomRol:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: nom_rol
+        descripcionRol:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            column: descripcion_rol
+    lifecycleCallbacks: {  }
